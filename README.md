@@ -1,4 +1,4 @@
 # mazed
 
-index hanya nyomot orang
-## logic yang digunakan yang gpt!
+index hanya untuk referensi logic
+## logic asli yang digunakan yang gpt!
