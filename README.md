@@ -1,3 +1,3 @@
 # mazed
 
-test hanya digunakan untuk referensi logic
+## test hanya digunakan untuk referensi logic

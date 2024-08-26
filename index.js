@@ -377,6 +377,7 @@ function movePlayer(dx, dy) {
     updateGame(); // Redraw the game after movement or changes
 }
 
+// Level Up Function
 function levelUp() {
     if (baseXp == 2) {
         playerLevel + 1;
