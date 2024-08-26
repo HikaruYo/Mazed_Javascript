@@ -1,4 +1,3 @@
 # mazed
 
-index hanya untuk referensi logic
-## logic asli yang digunakan yang gpt!
+test hanya digunakan untuk referensi logic
