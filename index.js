@@ -28,6 +28,11 @@ const player = {
     y: 1,
     size: tileSize - 10,
 };
+// const monster = {
+//     x: 1,
+//     y: 1,
+//     size: tileSize - 10,
+// }
 
 let playerXp = 0;
 let playerLevel = 1;
@@ -51,7 +56,7 @@ function drawMaze() {
             // Draw Pintu Finish
             else if (maze[row][col] === 2) {
                 ctx.fillStyle = 'rgba(255, 0, 255, 1)';
-            } 
+            }
             // Draw Monster
             else if (maze[row][col] === 3) {
                 ctx.fillStyle = 'rgba(25, 100, 255, 1)';
@@ -94,12 +99,15 @@ function movePlayer(dx, dy) {
 
 // Level Up Function
 function levelUp() {
-    if (playerLevel == 1 && playerXp >= 2) {
+    requiredXpToLevel2 = 2;
+    requiredXpToLevel3 = 5;
+
+    if (playerLevel == 1 && playerXp >= requiredXpToLevel2) {
         playerLevel++;
-        playerXp = 0;
-    } else if (playerLevel == 2 && playerXp >= 5) {
+        playerXp -= requiredXpToLevel2;
+    } else if (playerLevel == 2 && playerXp >= requiredXpToLevel3) {
         playerLevel++;
-        playerXp = 0;
+        playerXp -= requiredXpToLevel3;
     }
     // CATATAN
     /*
@@ -113,7 +121,7 @@ function drawLevel() {
 
 document.addEventListener('keydown', (event) => {
     switch (event.key) {
-        case 'ArrowUp':
+        case 'ArrowUp' || 'w':
             movePlayer(0, -1);
             break;
         case 'ArrowDown':
@@ -133,6 +141,7 @@ function updateGame() {
     drawBackground(); // Draw the background first
     drawMaze();       // Draw the maze on top of the background
     drawPlayer();     // Draw the player on top of the maze
+    // drawMonster();
     drawLevel();
     levelUp();
 }
