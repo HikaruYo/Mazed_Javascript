@@ -310,7 +310,7 @@ let maze = [
     [1, 0, 1, 1, 1, 0, 1, 1, 0, 1],
     [1, 0, 0, 0, 1, 0, 0, 1, 0, 1],
     [1, 1, 1, 0, 1, 1, 0, 1, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
+    [1, 0, 0, 0, 3, 0, 3, 1, 0, 1],
     [1, 1, 1, 1, 1, 1, 0, 0, 0, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
@@ -323,7 +323,7 @@ const player = {
 };
 
 let baseXp = 0;
-let playerLevel = 1;
+let playerLevel = 0;
 
 // Function to draw the background image
 function drawBackground() {
@@ -379,10 +379,25 @@ function movePlayer(dx, dy) {
 
 // Level Up Function
 function levelUp() {
-    if (baseXp == 2) {
-        playerLevel + 1;
-        document.getElementById('level').textContent = `Level = ${playerLevel}`;
+    switch (true) {
+        case baseXp >= 2 :
+            playerLevel = 1;
+            baseXp = 0;
+            break;
+        case baseXp >= 4 :
+            playerLevel = 2;
+            baseXp = 0;
+            break;
     }
+    // CATATAN
+    /*
+        Level ambil dari session
+        
+    */
+}
+
+function drawLevel() {
+    document.getElementById('level').textContent = `Level = ${playerLevel}`;
 }
 
 document.addEventListener('keydown', (event) => {
@@ -407,6 +422,7 @@ function updateGame() {
     drawBackground(); // Draw the background first
     drawMaze();       // Draw the maze on top of the background
     drawPlayer();     // Draw the player on top of the maze
+    drawLevel();
     levelUp();
 }
 
